@@ -24,7 +24,7 @@ const Navbar = () => {
         /> */}
 
         {/* Navigation Links */}
-        <div className="hidden md:flex gap-6">
+        <div className="md:flex gap-6">
           <h1 
             className="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition cursor-pointer"
             onClick={() => navigate("/")}
