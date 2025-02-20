@@ -10,13 +10,13 @@ const RecipeDetail = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover rounded-lg shadow-lg" />
+      <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover rounded-lg shadow-lg  dark:text-white mt-4" />
       <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-4">{recipe.title}</h1>
-      <p className="text-gray-600 dark:text-gray-300 mt-2">{recipe.description}</p>
+      <p className="text-gray-600 dark:text-gray-300 mt-2 font-body">{recipe.description}</p>
 
       {/* Ingredients Section */}
       <h2 className="text-2xl font-semibold mt-6 text-gray-900 dark:text-white">🛒 Ingredients</h2>
-      <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mt-2">
+      <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mt-2 font-family">
         <li>2 cups of flour</li>
         <li>1 cup sugar</li>
         <li>Chocolate chips</li>

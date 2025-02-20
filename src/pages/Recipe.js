@@ -10,19 +10,19 @@ const Home = () => {
   );
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">🍽 Featured Recipes</h1>
+    <div className="container mx-auto p-4 md:p-6">
+      <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">🍽 Featured Recipes</h1>
 
       {/* Search Bar */}
       <input
         type="text"
         placeholder="Search for a recipe..."
-        className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:outline-none"
+        className="w-full py-3 px-4 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:outline-none shadow-sm focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-500"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} />)
         ) : (
