@@ -1,5 +1,5 @@
 {
-  "name": "recipe_portfolio",
+  "name": "recipes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -57,5 +57,5 @@
   "bugs": {
     "url": "https://github.com/geegeeee/recipes/issues"
   },
-  "homepage": "https://github.com/geegeeee/recipes#readme"
+  "homepage": "."
 }
