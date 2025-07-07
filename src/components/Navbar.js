@@ -27,13 +27,13 @@ const Navbar = () => {
         <div className="md:flex gap-6">
           <h1 
             className="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition cursor-pointer"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/recipe")}
           >
             🍰 Recipes Blog
           </h1>
           <h1 
             className="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition cursor-pointer"
-            onClick={() => navigate("/portfolio")}
+            onClick={() => navigate("/")}
           >
             🎨 Portfolio
           </h1>

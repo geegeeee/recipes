@@ -6,14 +6,14 @@ const projects = [
     title: "Recipe Blog",
     description: "A modern recipe blog with dark mode and search functionality.",
     image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=3126&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/"
+    link: "/recipe"
   },
   {
     id: 2,
     title: "Portfolio Website",
     description: "My personal portfolio built with React and Tailwind CSS.",
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    link: "/portfolio",
+    link: "/",
   },
   {
     id: 3,

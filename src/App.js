@@ -11,9 +11,9 @@ function App() {
       <div className="bg-gray-100 dark:bg-gray-900 min-h-screen">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Recipe />} />
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/recipe" element={<Recipe />} />
           <Route path="/recipe/:id" element={<RecipeDetail />} />
-          <Route path="/portfolio" element={<Portfolio />}/>
         </Routes>
       </div>
     </Router>
