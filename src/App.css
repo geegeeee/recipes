@@ -37,3 +37,15 @@
   }
 }
 
+@keyframes fade {
+  0%, 65%, 100% { opacity: 1; }
+  35%, 85% { opacity: 0; }
+}
+
+.animate-fade {
+  animation: fade 9s infinite;
+}
+
+.animation-delay-4s {
+  animation-delay: 4s;
+}

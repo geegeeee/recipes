@@ -34,11 +34,19 @@ const Portfolio = () => {
 
       {/* About Me Section */}
       <section className="text-center mb-12">
-      <img
-          src="/profile_photo.jpeg"
-          alt="Profile"
-          className="w-40 h-40 md:w-60 md:h-60 rounded-full mx-auto shadow-lg mb-4"
-        />
+        <div className="relative w-40 h-40 md:w-60 md:h-60 mx-auto mb-4 rounded-full shadow-lg overflow-hidden">
+          <img
+            src="/profile.jpg"
+            alt="Profile 1"
+            className="absolute inset-0 w-full h-full object-cover rounded-full opacity-100 transition-opacity duration-4s animate-fade"
+          />
+          <img
+            src="/profile_photo.jpeg"
+            alt="Profile 2"
+            className="absolute inset-0 w-full h-full object-cover rounded-full opacity-0 transition-opacity duration-4s animate-[fade_9s_infinite_2s]"
+          />
+        </div>
+
         <h1 className="text-xl md:text-3xl font-semibold text-gray-900 dark:text-white mt-6 mb-2">Gigi Nwe</h1>
         <h2 className="text-lg md:text-2xl font-semibold text-gray-600 dark:text-white mb-4">Myat Theingi Nwe</h2>
         <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-7">

@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Recipe from "./pages/Recipe";
 import RecipeDetail from "./pages/RecipeDetail";
 import Portfolio from "./pages/Portfolio";
+import Cursor from "./components/Cursor";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/recipe" element={<Recipe />} />
           <Route path="/recipe/:id" element={<RecipeDetail />} />
         </Routes>
+        <Cursor/>
       </div>
     </Router>
   );
