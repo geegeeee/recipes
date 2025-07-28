@@ -78,25 +78,30 @@ const Portfolio = () => {
     return isIntersecting;
   }
 
-  const AnimatedSection = ({children}) => {
+  const AnimatedSection = React.memo(({ children }) => {
     const ref = useRef();
     const isVisible = useOnScreen(ref);
-
+  
     return (
       <section
         ref={ref}
-        className={`transform transition-opacity transition-transform duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {children}
+        className={`transform transition-opacity transition-transform duration-700 ease-out ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        {children}
       </section>
-    )
-  }
+    );
+  });  
 
   return (
     <div className="container mx-auto p-10">
       <AnimatedSection>
+        
       <Helmet>
         <title>Gigi Nwe Portfolio</title>
       </Helmet>
+
       {/* Header */}
       <h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-6">
         My Portfolio
@@ -175,7 +180,6 @@ const Portfolio = () => {
       </AnimatedSection>
 
       {/* Contact Me Section */}
-      <AnimatedSection>
       <section className="mt-12 text-center p-5">
       <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6">
         Contact Me
@@ -224,7 +228,6 @@ const Portfolio = () => {
         {status && <p className="mt-2 text-sm">{status}</p>}
       </form>
     </section>
-    </AnimatedSection>
   </div>
   );
 };
