@@ -97,7 +97,7 @@ const Portfolio = () => {
   return (
     <div className="container mx-auto p-10">
       <AnimatedSection>
-        
+
       <Helmet>
         <title>Gigi Nwe Portfolio</title>
       </Helmet>
@@ -150,7 +150,7 @@ const Portfolio = () => {
       </AnimatedSection>
 
       {/* Projects Section */}
-      <AnimatedSection>
+      
       <section className="p-5">
         <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white text-center mb-6">
           🏆 Featured Projects
@@ -177,7 +177,7 @@ const Portfolio = () => {
           ))}
         </div>
       </section>
-      </AnimatedSection>
+      
 
       {/* Contact Me Section */}
       <section className="mt-12 text-center p-5">
