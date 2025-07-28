@@ -190,7 +190,7 @@ const Portfolio = () => {
       >
         <input
           type="text"
-          placeholder="From (Kindly provide your NAME here)"
+          placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="p-3 border rounded-lg"
@@ -198,7 +198,7 @@ const Portfolio = () => {
         />
         <input
           type="email"
-          placeholder="From (Kindly provide your email address)"
+          placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="p-3 border rounded-lg"
