@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
-import { error } from "ajv/dist/vocabularies/applicator/dependencies";
+import { Helmet } from "react-helmet";
 
 const projects = [
   {
@@ -63,8 +63,40 @@ const Portfolio = () => {
     )
   }
 
+  function useOnScreen(ref){
+    const [isIntersecting, setIntersecting] = useState(false);
+
+    useEffect (() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setIntersecting(entry.isIntersecting),
+        {threshold : 0.1} // triggers when 10% visible
+      );
+      if (ref.current) { observer.observe(ref.current); }
+      return () => { observer.disconnect(); }
+    }, [ref]);
+
+    return isIntersecting;
+  }
+
+  const AnimatedSection = ({children}) => {
+    const ref = useRef();
+    const isVisible = useOnScreen(ref);
+
+    return (
+      <section
+        ref={ref}
+        className={`transform transition-opacity transition-transform duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {children}
+      </section>
+    )
+  }
+
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-10">
+      <AnimatedSection>
+      <Helmet>
+        <title>Gigi Nwe Portfolio</title>
+      </Helmet>
       {/* Header */}
       <h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-6">
         My Portfolio
@@ -110,35 +142,41 @@ const Portfolio = () => {
           </a>
         </div>
       </section>
+      </AnimatedSection>
 
       {/* Projects Section */}
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white text-center mb-6">
-        🏆 Featured Projects
-      </h2>
+      <AnimatedSection>
+      <section className="p-5">
+        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white text-center mb-6">
+          🏆 Featured Projects
+        </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300"
-          >
-            <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{project.title}</h3>
-              <p className="text-gray-700 dark:text-gray-300 mt-2">{project.description}</p>
-              <a
-                href={project.link}
-                className="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-              >
-                View Project
-              </a>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{project.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300 mt-2">{project.description}</p>
+                <a
+                  href={project.link}
+                  className="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                >
+                  View Project
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-      
+          ))}
+        </div>
+      </section>
+      </AnimatedSection>
+
       {/* Contact Me Section */}
-      <section className="mt-12 text-center">
+      <AnimatedSection>
+      <section className="mt-12 text-center p-5">
       <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6">
         Contact Me
       </h2>
@@ -186,8 +224,8 @@ const Portfolio = () => {
         {status && <p className="mt-2 text-sm">{status}</p>}
       </form>
     </section>
-
-    </div>
+    </AnimatedSection>
+  </div>
   );
 };
 

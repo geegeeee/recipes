@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import RecipeCard from "../components/RecipeCard";
 import recipes from "../data/recipes";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -11,6 +12,9 @@ const Home = () => {
 
   return (
     <div className="container mx-auto p-4 md:p-6">
+      <Helmet>
+        <title>Gigi Nwe Recipes</title>
+      </Helmet>
       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">🍽 Featured Recipes</h1>
 
       {/* Search Bar */}
