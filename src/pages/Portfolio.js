@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import { error } from "ajv/dist/vocabularies/applicator/dependencies";
 
 const projects = [
   {
@@ -25,6 +27,42 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    const templateParams = {
+      title: title,
+      message: message,
+      name: name,
+      email: email,
+      time: new Date().toLocaleString(),
+    };
+
+    emailjs.send(
+      "service_giginwe",
+      "template_kte95tk",
+      templateParams,
+      "ooRLgCbIdOoLMV8lG"
+    ).then(
+      (response) => {
+        setStatus("Message sent successfully! I will get back to you soon!");
+        setName("");
+        setEmail("");
+        setTitle("");
+        setMessage("");
+      },
+      (error) => {
+        setStatus("Failed to send message. Please try again.");
+      }
+    )
+  }
+
   return (
     <div className="container mx-auto p-6">
       {/* Header */}
@@ -50,9 +88,9 @@ const Portfolio = () => {
         <h1 className="text-xl md:text-3xl font-semibold text-gray-900 dark:text-white mt-6 mb-2">Gigi Nwe</h1>
         <h2 className="text-lg md:text-2xl font-semibold text-gray-600 dark:text-white mb-4">Myat Theingi Nwe</h2>
         <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-7">
-          I'm a passionate front-end developer who loves creating beautiful and functional web experiences. 
+          I'm a passionate front-end developer who loves creating beautiful and minimalist, yet functional web experiences. 
           Passionate in front-end website development, Machine Learning, and Artificial Intelligence. 
-          Proficient in React, HTML, CSS, JavaScript, PyQt, C++, C#, GitHub, AWS, and Azure.
+          Proficient in React, JavaScript, HTML, CSS, Tailwind, PyQt, C++, C#, GitHub, AWS, and Azure.
         </p>
 
         {/* Social Links */}
@@ -98,6 +136,57 @@ const Portfolio = () => {
           </div>
         ))}
       </div>
+      
+      {/* Contact Me Section */}
+      <section className="mt-12 text-center">
+      <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6">
+        Contact Me
+      </h2>
+      <form
+        onSubmit={sendEmail}
+        className="max-w-md mx-auto flex flex-col space-y-4"
+      >
+        <input
+          type="text"
+          placeholder="From (Kindly provide your NAME here)"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="p-3 border rounded-lg"
+          required
+        />
+        <input
+          type="email"
+          placeholder="From (Kindly provide your email address)"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="p-3 border rounded-lg"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Subject"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="p-3 border rounded-lg"
+          required
+        />
+        <textarea
+          placeholder="Message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="p-3 border rounded-lg h-32"
+          required
+        ></textarea>
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+        >
+          Send Message
+        </button>
+        {status && <p className="mt-2 text-sm">{status}</p>}
+      </form>
+    </section>
+
     </div>
   );
 };
