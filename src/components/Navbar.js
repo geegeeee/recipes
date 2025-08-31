@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -7,6 +8,7 @@ const Navbar = () => {
   });
 
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
@@ -14,29 +16,42 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md px-6 py-4 flex justify-between items-center transition-all">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md px-6 py-4 flex justify-between items-center transition-all">
       {/* Logo & Navigation */}
       <div className="flex items-center gap-8">
-        {/* <img
-          src="/GI.png"
-          alt="logo"
-          className="w-16 h-16 rounded-full mx-auto"
-        /> */}
 
-        {/* Navigation Links */}
-        <div className="md:flex gap-6">
-          <h1 
-            className="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition cursor-pointer"
-            onClick={() => navigate("/recipe")}
+        {/* Hamburger Menu */}
+        <div className="relative">
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
           >
-            🍰 Recipes Blog
-          </h1>
-          <h1 
-            className="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition cursor-pointer"
-            onClick={() => navigate("/")}
-          >
-            🎨 Portfolio
-          </h1>
+            <Menu className="w-6 h-6 text-gray-800 dark:text-white" />
+          </button>
+
+          {/* Dropdown */}
+          {open && (
+            <div className=" w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg ">
+              <button
+                onClick={() => { navigate("/"); setOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                Portfolio
+              </button>
+              <button
+                onClick={() => { document.getElementById("projects")?.scrollIntoView({behavior: "smooth"}); setOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                📂 Projects
+              </button>
+              <button
+                onClick={() => { document.getElementById("contact")?.scrollIntoView({behavior: "smooth"}); setOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                📩 Contact Me
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
